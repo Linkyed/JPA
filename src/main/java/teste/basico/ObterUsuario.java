@@ -3,23 +3,20 @@ package teste.basico;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
 import modelo.basico.Usuario;
 
-
-public class NovoUsuario {
+public class ObterUsuario {
 	public static void main(String[] args) {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("estudo-JPA");
 		EntityManager em = emf.createEntityManager();
 		
-		Usuario novoUsuario = new Usuario("Alexandre", "alexandre@gmail.com");
-		
-		em.getTransaction().begin();
-		em.persist(novoUsuario);
-		em.getTransaction().commit();
-		
+		Usuario usuario = em.find(Usuario.class, 1L);
+		System.out.println(usuario);
 		
 		em.close();
 		emf.close();
+		
 	}
 }
