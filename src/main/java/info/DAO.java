@@ -48,6 +48,10 @@ public class DAO<E> {
 		return obterTodos(10, 0);
 		}
 	
+	public E obterPrimeiro(){
+		return obterTodos(1, 0).get(0);
+	}
+	
 	public List<E> obterTodos(int quantidade, int deslocamento){
 		if (classe == null) {
 			throw new RuntimeException();
